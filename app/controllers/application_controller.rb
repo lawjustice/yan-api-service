@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::API
     def produce_message
         topic_name = params.require(:topic_name)
-        message = params.require(:message)
         formatted_topic_name = topic_name
+        message = {
+            time_producer: Time.now
+        }
 
         WaterDrop::SyncProducer.call(
-            message,
+            message.to_json,
             topic: format_topic_name(topic_name),
             partition_key: "#{message.size}"
         )
