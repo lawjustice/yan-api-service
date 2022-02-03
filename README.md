@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This service used for replicate confluent issue that need to connect to multiple broker node
 
-Things you may want to cover:
+Detail framework
+- rails 7
+- karafka 1.4
 
-* Ruby version
+Environment variable file `.env`, we can follow the env sample in `.env sample`
 
-* System dependencies
 
-* Configuration
+kafka consumer
+start by 
+1. `bundle install`
+2. `karafka s`
 
-* Database creation
 
-* Database initialization
+api server
+1. `bundle install`
+2. `rails s`
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+to produce message we can use the api server and call api kafka producer by this curl
+```
+curl --location --request POST 'localhost:3000/produce_message' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "topic_name": "user",
+    "message": "hi"
+}'
+```
 
-* Deployment instructions
-
-* ...
+the consumer and producer will have a prefix of happyfresh
