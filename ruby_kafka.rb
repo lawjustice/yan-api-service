@@ -12,7 +12,6 @@ logger = Logger.new(STDOUT)
 Dotenv.load
 
 brokers = ENV.fetch("KAFKA_BROKERS", "localhost:9092").split(",")
-return
 # Make sure to create this topic in your Kafka cluster or configure the
 # cluster to auto-create topics.
 # topic = "happyfresh_user"
