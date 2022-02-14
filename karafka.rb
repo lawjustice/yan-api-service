@@ -35,6 +35,7 @@ class KarafkaApp < Karafka::App
     config.batch_fetching = true
 
     config.logger.level = Logger::INFO
+    config.logger = ActiveSupport::Logger.new('log/karafka.log')
   end
 
   monitor.subscribe('app.initialized') do

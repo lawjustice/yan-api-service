@@ -61,10 +61,7 @@ begin
   consumer.each_message do |message|
     begin
         puts message.topic
-        puts "duration_create_time = "
         event = JSON.parse(message.value)
-        puts event
-        puts "#{event["time_producer"]}s"
         time_producer = event["time_producer"]
         if !time_producer.nil?
             duration = Time.now - Time.parse(time_producer)
