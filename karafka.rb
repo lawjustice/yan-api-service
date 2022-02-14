@@ -21,7 +21,7 @@ end
 
 class KarafkaApp < Karafka::App
   setup do |config|
-    kafka_urls = ENV["CONFLUENT_URL"] || "127.0.0.1:9092"
+    kafka_urls = ENV["KAFKA_BROKERS"] || "127.0.0.1:9092"
     config.kafka.seed_brokers = ["kafka://#{kafka_urls}"]
     if ENV["CONFLUENT_USERNAME"].present?
       config.kafka.sasl_plain_username = ENV["CONFLUENT_USERNAME"]

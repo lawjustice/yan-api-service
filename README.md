@@ -19,6 +19,9 @@ api server
 1. `bundle install`
 2. `rails s`
 
+ruby-kafka consumer
+1. `bundle install`
+2. `ruby ruby_kafka.rb`
 
 to produce message we can use the api server and call api kafka producer by this curl
 ```
