@@ -8,7 +8,8 @@ require 'time'
 require 'dotenv'
 
 
-logger = Logger.new(STDOUT)
+# logger = Logger.new(STDOUT)
+logger = Logger.new('log/ruby_kafka_consumer.log')
 Dotenv.load
 
 brokers = ENV.fetch("KAFKA_BROKERS", "localhost:9092").split(",")
@@ -67,7 +68,9 @@ begin
         time_producer = event["time_producer"]
         if !time_producer.nil?
             duration = Time.now - Time.parse(time_producer)
-            puts "duration = #{duration}s"
+            message = "time to consume topic #{message.topic} with duration = #{duration}s"
+            puts message
+            logger.info(message)
         end
     rescue Exception => e
       puts e
